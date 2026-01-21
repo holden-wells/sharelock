@@ -34,7 +34,7 @@ sharelock -h
 
 ### From source
 ```bash
-git clone https://www.github.com/holden_wells/sharelock.git
+git clone https://www.github.com/holden-wells/sharelock.git
 
 cd sharelock
 
