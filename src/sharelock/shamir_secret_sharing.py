@@ -27,7 +27,7 @@ ALTERNATE_PADDING_BYTE = b'\x01'
 
 
 
-def split( data: bytes, shares: int, threshold: int, padding_byte: bytes | None = PADDING_BYTE ):
+def split( data: bytes, shares: int, threshold: int, padding_byte: bytes = PADDING_BYTE ):
 
     """
     Use Shamir's Secret Sharing to split 'data' into 'shares' keys.
@@ -133,7 +133,7 @@ def split( data: bytes, shares: int, threshold: int, padding_byte: bytes | None 
 
 
 
-def combine( shares: list[ tuple[ int, bytes ] ], padding_byte: bytes | None = PADDING_BYTE ) -> bytes:
+def combine( shares: list[ tuple[ int, bytes ] ], padding_byte: bytes = PADDING_BYTE ) -> bytes:
 
     """
     Combine key shares into the original data from which they were split.
@@ -202,7 +202,7 @@ def combine( shares: list[ tuple[ int, bytes ] ], padding_byte: bytes | None = P
 
 
 
-def print_secrets( shares: list[ tuple[ int, bytes ] ], threshold: int | None = None, quiet = False ):
+def print_secrets( shares: list[ tuple[ int, bytes ] ], threshold: int = None, quiet = False ):
 
     """
     Write secret shares to stdout.

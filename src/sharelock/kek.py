@@ -31,7 +31,7 @@ class KEK:
     
 
 
-    def generate( self, public_key_filename: str, shares: int, threshold: int, padding_byte: bytes | None = None, quiet: bool = False ):
+    def generate( self, public_key_filename: str, shares: int, threshold: int, padding_byte: bytes = None, quiet: bool = False ):
 
         """
 
