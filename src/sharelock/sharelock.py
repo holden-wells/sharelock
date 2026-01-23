@@ -26,7 +26,7 @@ import sharelock.decrypter as decrypter
 
 
 
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 
 
@@ -175,65 +175,59 @@ def main( ):
 
 
 
-    match ( args.mode ):
+    if args.mode == 'generate':
+
+        generator = kek.KEK( )
 
 
-        case 'generate':
-
-            generator = kek.KEK( )
-
-
-            generator.generate( 
-                public_key_filename = args.kek_file,
-                shares = args.shares,
-                threshold = args.threshold,
-                quiet = args.quiet,
-            )
+        generator.generate( 
+            public_key_filename = args.kek_file,
+            shares = args.shares,
+            threshold = args.threshold,
+            quiet = args.quiet,
+        )
 
 
-            exit( 0 )
+        exit( 0 )
 
 
 
-        case 'encrypt':
+    if args.mode == 'encrypt':
 
-            encrypt_context = encrypter.Encrypter( )
-
-
-            encrypt_context.encrypt(
-                public_key_filename = args.kek_file,
-                output_filename = args.output_file,
-                dek_filename = args.dek_file,
-            )
+        encrypt_context = encrypter.Encrypter( )
 
 
-            exit( 0 )
+        encrypt_context.encrypt(
+            public_key_filename = args.kek_file,
+            output_filename = args.output_file,
+            dek_filename = args.dek_file,
+        )
+
+
+        exit( 0 )
 
 
 
-        case 'decrypt':
+    if args.mode == 'decrypt':
 
 
-            decrypt_context = decrypter.Decrypter( )
+        decrypt_context = decrypter.Decrypter( )
 
 
-            decrypt_context.decrypt(
-                encrypted_data_filename = args.input_file,
-                encrypted_dek_filename = args.dek_file,
-            )
+        decrypt_context.decrypt(
+            encrypted_data_filename = args.input_file,
+            encrypted_dek_filename = args.dek_file,
+        )
 
 
-            exit( 0 )
-
-    
-
-        case default:
+        exit( 0 )
 
 
-            print( 'Unknown execution mode "{ args.mode }".', file = sys.stderr )
+
+    print( 'Unknown execution mode "{ args.mode }".', file = sys.stderr )
 
 
-            exit( 1 )
+    exit( 1 )
 
 
 

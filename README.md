@@ -61,7 +61,7 @@ sharelock -h
 
 ### Encryption
 1. Take in a file on stdin
-2. Generate a Symetric Data Encryption Key
+2. Generate a Symmetric Data Encryption Key
 3. Encrypt stdin using the Data Encryption Key and write to an output file
 4. Encrypt the Data Encryption Key using the Key Encryption Key's Public Key
 5. Write the encrypted Data Encryption Key to an output file
